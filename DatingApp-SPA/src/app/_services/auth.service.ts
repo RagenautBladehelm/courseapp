@@ -25,9 +25,9 @@ changeMemberPhoto(photoUrl: string){
  login(model: any){
   return this.http.post(this.baseUrl + 'login', model)
   .pipe(
-    map((response: any)=>{
+    map((response: any) => {
       const user = response;
-      if(user){
+      if (user){
         localStorage.setItem('token', user.token);
         localStorage.setItem('user', JSON.stringify(user.user));
         this.decodedToken = this.jwtHelper.decodeToken(user.token);
@@ -37,8 +37,8 @@ changeMemberPhoto(photoUrl: string){
     })
   );
 }
-  register(model: any){
-    return this.http.post(this.baseUrl + 'register', model);
+  register(user: User){
+    return this.http.post(this.baseUrl + 'register', user);
   }
 
   loggedIn(){

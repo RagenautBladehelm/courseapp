@@ -45,6 +45,11 @@ export class PhotoEdditorComponent implements OnInit {
           isMain: res.isMain
         };
         this.photos.push(photo);
+        if (photo.isMain){
+          this.authService.changeMemberPhoto(photo.url);
+          this.authService.currentUser.photoUrl = photo.url;
+          localStorage.setItem('user', JSON.stringify(this.authService.currentUser));
+        }
       }
     };
   }
@@ -62,7 +67,7 @@ export class PhotoEdditorComponent implements OnInit {
       localStorage.setItem('user', JSON.stringify(this.authService.currentUser));
     }, error => {
       this.alertify.error(error);
-    })
+    });
   }
 
   deletePhoto(id: number){
