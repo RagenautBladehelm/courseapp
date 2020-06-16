@@ -28,6 +28,9 @@ import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { PhotoEdditorComponent } from './members/photo-edditor/photo-edditor.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
+import { ListResolver } from './_resolvers/lists.resolver';
 
 
 export function tokenGetter(){
@@ -67,7 +70,9 @@ export function tokenGetter(){
       }),
       NgxGalleryModule,
       FileUploadModule,
-      BsDatepickerModule.forRoot()
+      BsDatepickerModule.forRoot(),
+      PaginationModule.forRoot(),
+      ButtonsModule.forRoot()
    ],
    providers: [
       AuthService,
@@ -75,7 +80,8 @@ export function tokenGetter(){
       MemberDetailResolver,
       MemberListResolver,
       MemberEditResolver,
-      PreventUnsavedChanges
+      PreventUnsavedChanges,
+      ListResolver
    ],
    bootstrap: [
       AppComponent
